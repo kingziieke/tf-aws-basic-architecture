@@ -13,7 +13,22 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "instance_count" {
-  type    = number
-  default = 1
+//variable "instance_count" {
+//  type    = number
+//  default = 1
+//}
+
+variable "rules" {
+  default = [
+    { // 1st item within the complex variable type
+      port  = 80
+      proto = "tcp"
+      cidrs = ["0.0.0.0/0"]
+    },
+    { // 2nd item within the complex variable type
+      port  = 22
+      proto = "tcp"
+      cidrs = ["73.141.176.26/32"]
+    }
+  ]
 }
